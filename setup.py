@@ -4,7 +4,7 @@ with open('README.md', 'r') as f:
     long_description = f.read()
 
 setup(
-    name='pgpackup',
+    name='pgbackup',
     version='0.1.0',
     author='Matthew Day',
     author_email='matt@unlimitedday.com',
@@ -12,5 +12,13 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/mday100/pgbackup',
-    packages=find_packages('src')
+    packages=find_packages('src'),
+    package_dir={'': 'src'},
+    install_requires=['boto3'],
+    python_requires='>=3.6',
+    entry_points={
+        'console_scripts': [
+            'pgbackup=pgbackup.cli:main',
+        ],
+    }
 )
